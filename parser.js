@@ -9,6 +9,16 @@ let regExpsDivide = [
 		regexp:		/\`{1}([\S\s]*?)\`{1}/gis,
 		html:		"<code>$1</code>"
 	},
+    {
+        name:       "image",
+        regexp:     /\!{1}\[([\S\s]*?)\]\(([\S\s]*?)\)/gim,
+        html:       "<img src='$2' alt='$1'>"
+    },
+    {
+        name:       "link",
+        regexp:     /\*{1}\[([\S\s]*?)\]\(([\S\s]*?)\)/gim,
+        html:       "<a href='$2'>$1</a>"
+    },
 	{
 		name:		"title3",
 		regexp:		/^#{3}(.*$)/gim,
@@ -52,6 +62,11 @@ let regExpsFormat = [
 		regexp:		/\*{1}([\s\S]*?)\*{1}/gim,
 		html:		"<i>$1</i>"
 	},
+    {
+        name:       "literal",
+        regexp:     /\\{1}([\S\s].*?)/gim,  //TODO fix literals
+        html:       "$1"
+    }
 ];
 
 function parse(){
